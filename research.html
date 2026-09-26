@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Research | Kevin Cui (Zheyuan Cui), Princeton Economics</title>
+<meta name="description" content="Research by Kevin Zheyuan Cui (Kevin Cui), Princeton University: the muni puzzle and the municipal term structure, generative AI and developer productivity, familiarity in international equity investment, and Chinese local government finance.">
+<link rel="canonical" href="https://kevin-zheyuan-cui.github.io/research.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --accent: #c3661e;
+  --accent-soft: #cf854b;
+  --ink: #212121;
+  --ink-soft: rgba(0, 0, 0, 0.72);
+  --ink-faint: rgba(0, 0, 0, 0.55);
+  --rule: rgba(0, 0, 0, 0.12);
+  --ground: #ffffff;
+  --band: #f5f5f5;
+  --nav-ink: rgba(0, 0, 0, 0.66);
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(195, 102, 30, 0.35);
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--ground);
+  border-bottom: 1px solid var(--rule);
+}
+
+.topbar-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-block: 14px;
+  padding-inline: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px 28px;
+}
+
+.wordmark {
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+  margin-right: auto;
+  border-bottom: none;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+}
+
+.nav a {
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--nav-ink);
+  border-bottom: none;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+/* ---------- page shell ---------- */
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-block: 40px 90px;
+  padding-inline: 24px;
+}
+
+h1 {
+  font-size: clamp(40px, 8vw, 60px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--accent);
+  letter-spacing: 0.005em;
+  margin: 0 0 56px;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent);
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 4px;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 16px;
+  max-width: 68ch;
+}
+
+/* ---------- contact block ---------- */
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 64px;
+}
+
+.identity {
+  flex: 1 1 280px;
+}
+
+.name {
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--accent-soft);
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+
+.contact-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 400;
+}
+
+.portrait {
+  flex: 0 1 260px;
+  max-width: 100%;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.portrait-slot {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  background: var(--band);
+  color: var(--ink-faint);
+  font-weight: 300;
+  text-align: center;
+  padding-inline: 16px;
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 56px;
+}
+
+.band {
+  background: var(--band);
+  padding-block: 28px;
+  padding-inline: 24px;
+}
+
+.links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: baseline;
+}
+
+/* ---------- papers ---------- */
+
+.papers {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.paper h3 a {
+  color: var(--accent);
+  border-bottom-color: rgba(195, 102, 30, 0.35);
+}
+
+.paper .byline {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0 0 6px;
+}
+
+.paper .status {
+  color: var(--accent-soft);
+  font-style: italic;
+  margin: 0 0 8px;
+}
+
+.paper .note {
+  color: var(--ink-faint);
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.paper .venue {
+  color: var(--ink-faint);
+  font-style: italic;
+  margin: 0 0 8px;
+}
+
+.paper .abstract {
+  margin: 0 0 10px;
+}
+
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 14px;
+}
+
+.todo {
+  color: var(--ink-faint);
+  font-weight: 300;
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="index.html">Kevin Zheyuan Cui</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="index.html">Contact &amp; Bio</a>
+      <a href="cv.html">Curriculum Vitae</a>
+      <a href="research.html" aria-current="page">Research</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Research</h1>
+
+  <section>
+    <h2>Job Market Paper</h2>
+    <div class="papers">
+      <article class="paper">
+        <h3>Term Structure with Investor Tax Heterogeneity: Application to the Muni Puzzle</h3>
+        <p class="status">Draft coming soon</p>
+        <p class="abstract">
+          I develop an equilibrium term-structure model in which investors differ in their tax
+          treatment and jointly choose taxable and tax-exempt bonds across maturities under
+          no-short-sale constraints. Top-bracket households receive the largest benefit from tax
+          exemption and therefore anchor short-maturity tax-exempt municipal bond yields.
+          Lower-tax investors value the exemption less, but those for whom duration is more
+          valuable participate in municipals farther out the yield curve, where the relative
+          benefit of bearing duration can offset their tax disadvantage. Endogenous participation
+          therefore makes the tax rate implied by municipal-to-taxable yield ratios vary with
+          maturity, rather than being set by a single marginal investor. This explains the
+          municipal bond puzzle: the literature benchmarks municipal yields at every maturity
+          against top-bracket households&rsquo; after-tax taxable yields. These closely match short
+          municipal yields, but long municipal yields substantially exceed them. Without targeting
+          municipal yields, the calibrated model accounts for 83 percent of the 117-basis-point gap
+          at thirty years. Empirically, the pass-through of top-bracket household tax rates to
+          municipal yields declines with maturity, while tax variation affecting lower-tax
+          institutions is increasingly reflected in yields farther out the curve. These opposite
+          maturity gradients support the mechanism and contradict the representative-tax
+          benchmark, in which the top-bracket household&rsquo;s tax rate applies at every maturity.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publication</h2>
+    <div class="papers">
+      <article class="paper">
+        <h3><a href="papers/generative_ai_high_skilled_work.pdf" target="_blank" rel="noopener">The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers</a></h3>
+        <p class="byline">with Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng and Tobias Salz</p>
+        <p class="venue">Management Science, forthcoming</p>
+        <p class="note">Coverage: New York Times; 2025 Economic Report of the President</p>
+        <p class="abstract">
+          This study evaluates the effect of generative AI on software developer productivity via
+          randomized controlled trials at Microsoft, Accenture, and an anonymous Fortune 100
+          company. These field experiments, run by the companies as part of their ordinary course
+          of business, provided a random subset of developers with access to an AI-based coding
+          assistant suggesting intelligent code completions. Though each experiment is noisy and
+          results vary across experiments, when data is combined across three experiments and 4,867
+          developers, our analysis reveals a 26.08% increase (SE: 10.3%) in completed tasks among
+          developers using the AI tool. Notably, less experienced developers had higher adoption
+          rates and greater productivity gains.
+        </p>
+        <p class="paper-links">
+          <a href="https://doi.org/10.1287/mnsc.2025.00535" target="_blank" rel="noopener">Journal page</a>
+          <span aria-hidden="true">|</span>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945566" target="_blank" rel="noopener">SSRN</a>
+          <span aria-hidden="true">|</span>
+          <a href="https://scholar.google.com/citations?user=R3__pBIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Working Papers</h2>
+    <div class="papers">
+      <article class="paper">
+        <h3><a href="papers/familiarity_international_equity.pdf" target="_blank" rel="noopener">Familiarity in International Equity Investment: Concentrated Value, Pervasive Allocation Bias</a></h3>
+        <p class="byline">with Yinan Qiu</p>
+        <p class="abstract">
+          Does familiarity convey information or produce bias? Using 2000&ndash;2024 data from 1,663
+          active U.S. international equity funds and managers&rsquo; foreign education as a
+          familiarity proxy, we examine both country allocation and stock selection. Funds
+          overweight education-linked countries, yet these sub-portfolios do not outperform. Within
+          familiar countries, the most active quartile of stocks earns a monthly five-factor alpha
+          of 41 basis points, while the remaining holdings earn no significant alpha. The
+          overweight persists after removing top-quartile stocks. Familiarity&rsquo;s value is
+          concentrated, its allocation footprint pervasive: information and bias coexist at margins
+          that country-level averages obscure.
+        </p>
+        <p class="paper-links">
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5279969" target="_blank" rel="noopener">SSRN</a>
+          <span aria-hidden="true">|</span>
+          <a href="https://scholar.google.com/citations?user=R3__pBIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        </p>
+      </article>
+
+      <article class="paper">
+        <h3>The Shadow in the Shadow: Cheap Bonds and Costly Debt in Chinese Local Government Finance</h3>
+        <p class="byline">with Tao Shen, Wei Xiong and Tianqi Zhi</p>
+        <p class="status">Draft available upon request</p>
+        <p class="abstract">
+          Chinese local government financing vehicles (LGFVs) borrow through publicly traded
+          standard bonds and through nonstandard debt, such as privately negotiated trust loans
+          and leases. Regulators have rationed their standard bond issuance since 2021, and the
+          2023 debt-resolution program put state backing behind these bonds. When standard bond
+          issuance was restricted, LGFVs with maturing standard bonds shifted to nonstandard debt.
+          After 2023, as standard bond yields fell, the gap between an LGFV&rsquo;s nonstandard
+          rates and its standard bond yields widened by 130 basis points. Standard bond yields also
+          lost most of their link to fundamentals, barely reflecting local land prices and fiscal
+          strength and not moving when an LGFV defaulted on nonstandard debt. Nonstandard rates
+          still price these local fundamentals, and only they predict LGFV revenue and defaults.
+          The backing made LGFV credit risk look smaller in the standard bond market, but the risk
+          remains, priced in costlier and less transparent nonstandard debt.
+        </p>
+      </article>
+
+      <article class="paper">
+        <h3>Public Debt Resolution and the Relocation of Local Information Rents: Evidence from Bank Wealth-Management Products in China</h3>
+        <p class="byline">with Tao Shen and Tianqi Zhi</p>
+        <p class="status">Draft available upon request</p>
+        <p class="abstract">
+          China&rsquo;s 2023 program to defuse local government debt risk had an unintended cost
+          for small local banks, which compete with national banks in the RMB 30 trillion
+          wealth-management market through local credit. Their products hold three times the
+          portfolio share of local government financing vehicle (LGFV) bonds that national
+          banks&rsquo; products do, mostly from their home provinces, and these holdings deliver
+          the higher returns and fewer losses that attract return-chasing investors. By moving
+          LGFV risk onto provincial balance sheets, the program compressed credit spreads within
+          and across provinces. The premium on home-province bonds fell by two-thirds, and local
+          banks retreated. The premium largely survived in non-standard debt, negotiated claims
+          with no public price, but only the largest local banks had the scale to move into it.
+          De-risking public bonds relocated the return to local information into opaque claims
+          that require scale, and the smallest banks lost most.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2>Work in Progress</h2>
+    <div class="papers">
+      <article class="paper">
+        <h3>Pension Funds, Demand for Duration and the Yield Curve</h3>
+        <p class="byline">with Maximilian Konradt</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
