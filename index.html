@@ -166,6 +166,11 @@ p {
   max-width: 68ch;
 }
 
+/* paper titles use the full column, not the reading measure */
+p.paper-line {
+  max-width: none;
+}
+
 /* ---------- contact block ---------- */
 
 .masthead {
@@ -340,7 +345,7 @@ section {
 
   <section>
     <h2>Job Market Paper</h2>
-    <p>
+    <p class="paper-line">
       <a href="papers/Cui_JMP.pdf" target="_blank" rel="noopener">Tax Heterogeneity, Duration Risk, and the Term Structure: An Application to the Municipal Bond Puzzle</a>
       <br><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7448940" target="_blank" rel="noopener">SSRN</a>
     </p>
