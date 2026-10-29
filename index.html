@@ -171,6 +171,38 @@ p.paper-line {
   max-width: none;
 }
 
+/* other papers: smaller group headings, coauthors and venue under each title */
+.subhead {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.paper-line + .subhead {
+  margin-top: 32px;
+}
+
+.paper-line .byline {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.paper-line .byline a {
+  color: inherit;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+}
+
+.paper-line .byline a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.paper-line .venue {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
 /* ---------- contact block ---------- */
 
 .masthead {
@@ -349,6 +381,27 @@ section {
       <a href="papers/Cui_JMP.pdf" target="_blank" rel="noopener">Tax Heterogeneity, Duration Risk, and the Term Structure: An Application to the Municipal Bond Puzzle</a>
       <br><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7448940" target="_blank" rel="noopener">SSRN</a>
     </p>
+  </section>
+
+  <section>
+    <h3 class="subhead">Publication</h3>
+    <p class="paper-line">
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945566" target="_blank" rel="noopener">The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers</a>
+      <br><span class="byline">with <a href="https://www.mertdemirer.com/" target="_blank" rel="noopener">Mert Demirer</a>, <a href="https://soniajaffe.com/" target="_blank" rel="noopener">Sonia Jaffe</a>, <a href="https://www.lmusolff.com/" target="_blank" rel="noopener">Leon Musolff</a>, <a href="https://www.microsoft.com/en-us/research/people/sidpeng/" target="_blank" rel="noopener">Sida Peng</a> and <a href="https://economics.mit.edu/people/faculty/tobias-salz" target="_blank" rel="noopener">Tobias Salz</a></span>
+      <br><span class="venue">Management Science, forthcoming</span>
+    </p>
+
+    <h3 class="subhead">Working Papers</h3>
+    <p class="paper-line">
+      <a href="papers/familiarity_international_equity.pdf" target="_blank" rel="noopener">Overvalued Geographic Familiarity in International Equity Management</a>
+      <br><span class="byline">with <a href="https://yinan-qiu.github.io/" target="_blank" rel="noopener">Yinan Qiu</a></span>
+    </p>
+    <p class="paper-line">
+      <a href="papers/WMP_shadow_banking_competition.pdf" target="_blank" rel="noopener">How Hidden Local Government Debt Shapes Shadow Banking Competition: Evidence from Wealth Management in China</a>
+      <br><span class="byline">with <a href="https://www.sem.tsinghua.edu.cn/en/info/1216/7623.htm" target="_blank" rel="noopener">Tao Shen</a> and Tianqi Zhi</span>
+    </p>
+
+    <p><a href="research.html">All research and abstracts &rarr;</a></p>
   </section>
 
   <section class="band">
