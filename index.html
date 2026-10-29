@@ -42,13 +42,16 @@
   color-scheme: light;
   --accent: #c3661e;
   --accent-soft: #cf854b;
+  --accent-wash: rgba(195, 102, 30, 0.08);
   --ink: #212121;
   --ink-soft: rgba(0, 0, 0, 0.72);
   --ink-faint: rgba(0, 0, 0, 0.55);
   --rule: rgba(0, 0, 0, 0.12);
   --ground: #ffffff;
-  --band: #f5f5f5;
-  --nav-ink: rgba(0, 0, 0, 0.66);
+}
+
+[hidden] {
+  display: none !important;
 }
 
 body {
@@ -72,149 +75,52 @@ a:hover {
   border-bottom-color: var(--accent);
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-}
-
-/* ---------- top bar ---------- */
-
-.topbar {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 10;
-  background: var(--ground);
-  border-bottom: 1px solid var(--rule);
-}
-
-.topbar-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding-block: 14px;
-  padding-inline: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 12px 28px;
-}
-
-.wordmark {
-  font-size: 19px;
-  font-weight: 300;
-  color: var(--ink-soft);
-  letter-spacing: 0.01em;
-  margin-right: auto;
-  border-bottom: none;
-}
-
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 26px;
-}
-
-.nav a {
-  font-weight: 300;
-  font-size: 15px;
-  color: var(--nav-ink);
-  border-bottom: none;
-}
-
-.nav a:hover,
-.nav a[aria-current="page"] {
-  color: var(--accent);
 }
 
 /* ---------- page shell ---------- */
 
 main {
-  max-width: 1080px;
+  max-width: 920px;
   margin: 0 auto;
-  padding-block: 40px 90px;
+  padding-block: 56px 90px;
   padding-inline: 24px;
-}
-
-h1,
-.page-title {
-  font-size: clamp(40px, 8vw, 60px);
-  font-weight: 300;
-  line-height: 1.15;
-  color: var(--accent);
-  letter-spacing: 0.005em;
-  margin: 0 0 56px;
-  text-wrap: balance;
 }
 
 h2 {
   font-size: 24px;
   font-weight: 400;
   color: var(--accent);
-  margin: 0 0 16px;
-  text-wrap: balance;
-}
-
-h3 {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 4px;
+  margin: 0 0 18px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
   text-wrap: balance;
 }
 
 p {
   margin: 0 0 16px;
-  max-width: 68ch;
+  max-width: 72ch;
 }
 
-/* paper titles use the full column, not the reading measure */
-p.paper-line {
-  max-width: none;
+section {
+  margin-bottom: 52px;
 }
 
-/* other papers: smaller group headings, coauthors and venue under each title */
-.subhead {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--accent);
-  margin: 0 0 10px;
-}
-
-.paper-line + .subhead {
-  margin-top: 32px;
-}
-
-.paper-line .byline {
-  color: var(--ink-soft);
-  font-style: italic;
-}
-
-.paper-line .byline a {
-  color: inherit;
-  border-bottom-color: rgba(0, 0, 0, 0.25);
-}
-
-.paper-line .byline a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
-.paper-line .venue {
-  color: var(--ink-faint);
-  font-style: italic;
-}
-
-/* ---------- contact block ---------- */
+/* ---------- masthead ---------- */
 
 .masthead {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 40px;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 
 .identity {
-  flex: 1 1 280px;
+  flex: 1 1 300px;
 }
 
 .name {
@@ -222,7 +128,7 @@ p.paper-line {
   font-weight: 300;
   line-height: 1.2;
   color: var(--accent-soft);
-  margin: 0 0 24px;
+  margin: 0 0 22px;
   text-wrap: balance;
 }
 
@@ -231,11 +137,33 @@ p.paper-line {
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
-  font-weight: 400;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 22px;
+}
+
+/* the CV is the one link a visitor looks for first */
+.cv-button {
+  display: inline-block;
+  padding: 5px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cv-button:hover {
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .portrait {
-  flex: 0 1 260px;
+  flex: 0 1 240px;
   max-width: 100%;
 }
 
@@ -245,35 +173,8 @@ p.paper-line {
   height: auto;
 }
 
-.portrait-slot {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 4 / 5;
-  max-width: 100%;
-  background: var(--band);
-  color: var(--ink-faint);
-  font-weight: 300;
-  text-align: center;
-  padding-inline: 16px;
-}
-
-/* ---------- sections ---------- */
-
-section {
-  margin-bottom: 56px;
-}
-
-.band {
-  background: var(--band);
-  padding-block: 28px;
-  padding-inline: 24px;
-}
-
-.links-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  align-items: baseline;
+.bio {
+  margin-bottom: 52px;
 }
 
 /* ---------- papers ---------- */
@@ -281,71 +182,111 @@ section {
 .papers {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 26px;
 }
 
-.paper h3 a {
+.paper-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 2px;
+  max-width: none;
+  text-wrap: pretty;
+}
+
+/* linked titles open the paper, as on the old research page */
+.paper-title a {
   color: var(--accent);
-  border-bottom-color: rgba(195, 102, 30, 0.35);
 }
 
 .paper .byline {
   color: var(--ink-soft);
   font-style: italic;
-  margin: 0 0 6px;
+  margin: 0 0 2px;
 }
 
-.paper .status {
-  color: var(--accent-soft);
-  font-style: italic;
-  margin: 0 0 8px;
+.paper .byline a {
+  color: inherit;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
 }
 
-.paper .note {
-  color: var(--ink-faint);
-  font-size: 14px;
-  margin: 0 0 8px;
+.paper .byline a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .paper .venue {
   color: var(--ink-faint);
   font-style: italic;
-  margin: 0 0 8px;
+  margin: 0 0 2px;
 }
 
-.paper .abstract {
-  margin: 0 0 10px;
+.paper .note {
+  color: var(--ink-faint);
+  font-size: 14px;
+  margin: 0 0 2px;
 }
 
 .paper-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 14px;
+  align-items: center;
+  gap: 6px 16px;
+  margin: 6px 0 0;
   font-size: 14px;
 }
 
-.todo {
-  color: var(--ink-faint);
-  font-weight: 300;
+.abstract-toggle {
+  font: inherit;
+  font-size: 14px;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid rgba(195, 102, 30, 0.5);
+  border-radius: 3px;
+  padding: 0 10px;
+  line-height: 1.7;
+  cursor: pointer;
+}
+
+.abstract-toggle::after {
+  content: " \25B8";
+}
+
+.abstract-toggle[aria-expanded="true"] {
+  background: var(--accent-wash);
+}
+
+.abstract-toggle[aria-expanded="true"]::after {
+  content: " \25BE";
+}
+
+.abstract-toggle:hover {
+  border-color: var(--accent);
+}
+
+.abstract {
+  margin-top: 10px;
+  padding-left: 14px;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+.abstract p {
+  margin: 0;
+}
+
+/* ---------- teaching ---------- */
+
+.course {
+  margin: 0 0 14px;
+  max-width: none;
 }
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="wordmark" href="index.html">Kevin Zheyuan Cui</a>
-    <nav class="nav" aria-label="Sections">
-      <a href="index.html" aria-current="page">Contact &amp; Bio</a>
-      <a href="cv.html">Curriculum Vitae</a>
-      <a href="research.html">Research</a>
-    </nav>
-  </div>
-</header>
-
 <main>
-  <p class="page-title">Contact &amp; Bio</p>
-
   <div class="masthead">
     <div class="identity">
       <h1 class="name">Kevin Zheyuan Cui</h1>
@@ -357,6 +298,11 @@ section {
         <span>Princeton, NJ 08544</span>
         <a href="mailto:kevin.cui@princeton.edu">kevin.cui@princeton.edu</a>
       </div>
+      <div class="quick-links">
+        <a class="cv-button" href="cv.pdf?v=20261029b" target="_blank" rel="noopener">CV</a>
+        <a href="https://scholar.google.com/citations?user=R3__pBIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=5254268" target="_blank" rel="noopener">SSRN</a>
+      </div>
     </div>
 
     <div class="portrait">
@@ -364,69 +310,191 @@ section {
     </div>
   </div>
 
-  <section>
-    <h2>Biography</h2>
-    <p>
-      I am a Ph.D. candidate in Economics at Princeton University and the Bendheim Center for
-      Finance. My research interests are asset pricing, fixed income, and financial
-      intermediaries, with work on the municipal bond market, Chinese local government finance,
-      international portfolio choice, and the impact of AI on productivity. I am on the
-      2026&ndash;2027 academic job market.
-    </p>
-  </section>
+  <p class="bio">
+    I am a Ph.D. candidate in Economics at Princeton University and the Bendheim Center for
+    Finance. My research interests are asset pricing, fixed income, and financial
+    intermediaries, with work on the municipal bond market, Chinese local government finance,
+    international portfolio choice, and the impact of AI on productivity. I am on the
+    2026&ndash;2027 academic job market.
+  </p>
 
-  <section>
+  <section id="research">
     <h2>Job Market Paper</h2>
-    <p class="paper-line">
-      <a href="papers/Cui_JMP.pdf" target="_blank" rel="noopener">Tax Heterogeneity, Duration Risk, and the Term Structure: An Application to the Municipal Bond Puzzle</a>
-      <br><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7448940" target="_blank" rel="noopener">SSRN</a>
-    </p>
+    <div class="papers">
+      <article class="paper">
+        <p class="paper-title"><a href="papers/Cui_JMP.pdf" target="_blank" rel="noopener">Tax Heterogeneity, Duration Risk, and the Term Structure: An Application to the Municipal Bond Puzzle</a></p>
+        <p class="paper-links">
+          <button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="abs-jmp" hidden>Abstract</button>
+          <a href="papers/Cui_JMP.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7448940" target="_blank" rel="noopener">SSRN</a>
+        </p>
+        <div class="abstract" id="abs-jmp">
+          <p>
+          I develop a term-structure model in which investors with heterogeneous taxes and balance
+          sheets jointly choose taxable and tax-exempt bonds across maturities under short-sale
+          constraints. These differences endogenously segment ownership and shape both yield
+          curves. The model explains the municipal bond puzzle: short tax-exempt municipal yields
+          closely match taxable yields after the highest household tax rates, while thirty-year
+          yields exceed this benchmark by 118 basis points, implying lower marginal tax rates.
+          Lower-tax investors whose liabilities hedge interest-rate risk bear duration risk more
+          cheaply than households and hold long municipal bonds despite smaller exemption
+          benefits. Long yields therefore reflect their lower taxes. Without targeting municipal
+          yields, the calibrated model explains 83 percent of this puzzle. Using cross-state
+          differences in home-state tax exemptions and a discontinuity in a bank-only tax benefit,
+          I find that household taxes are almost fully priced in short municipal yields but less
+          in long ones, while banks&rsquo; benefit is priced mainly in long yields, as the model
+          predicts. Counterfactuals show how tax reforms affect financing costs in both markets
+          through portfolio substitution.
+          </p>
+        </div>
+      </article>
+    </div>
   </section>
 
   <section>
-    <h3 class="subhead">Publication</h3>
-    <p class="paper-line">
-      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945566" target="_blank" rel="noopener">The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers</a>
-      <br><span class="byline">with <a href="https://www.mertdemirer.com/" target="_blank" rel="noopener">Mert Demirer</a>, <a href="https://soniajaffe.com/" target="_blank" rel="noopener">Sonia Jaffe</a>, <a href="https://www.lmusolff.com/" target="_blank" rel="noopener">Leon Musolff</a>, <a href="https://www.microsoft.com/en-us/research/people/sidpeng/" target="_blank" rel="noopener">Sida Peng</a> and <a href="https://economics.mit.edu/people/faculty/tobias-salz" target="_blank" rel="noopener">Tobias Salz</a></span>
-      <br><span class="venue">Management Science, forthcoming</span>
-    </p>
-
-    <h3 class="subhead">Working Papers</h3>
-    <p class="paper-line">
-      <a href="papers/familiarity_international_equity.pdf" target="_blank" rel="noopener">Overvalued Geographic Familiarity in International Equity Management</a>
-      <br><span class="byline">with <a href="https://yinan-qiu.github.io/" target="_blank" rel="noopener">Yinan Qiu</a></span>
-    </p>
-    <p class="paper-line">
-      <a href="papers/WMP_shadow_banking_competition.pdf" target="_blank" rel="noopener">How Hidden Local Government Debt Shapes Shadow Banking Competition: Evidence from Wealth Management in China</a>
-      <br><span class="byline">with <a href="https://www.sem.tsinghua.edu.cn/en/info/1216/7623.htm" target="_blank" rel="noopener">Tao Shen</a> and Tianqi Zhi</span>
-    </p>
-
-    <p><a href="research.html">All research and abstracts &rarr;</a></p>
+    <h2>Publication</h2>
+    <div class="papers">
+      <article class="paper">
+        <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945566" target="_blank" rel="noopener">The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers</a></p>
+        <p class="byline">with <a href="https://www.mertdemirer.com/" target="_blank" rel="noopener">Mert Demirer</a>, <a href="https://soniajaffe.com/" target="_blank" rel="noopener">Sonia Jaffe</a>, <a href="https://www.lmusolff.com/" target="_blank" rel="noopener">Leon Musolff</a>, <a href="https://www.microsoft.com/en-us/research/people/sidpeng/" target="_blank" rel="noopener">Sida Peng</a> and <a href="https://economics.mit.edu/people/faculty/tobias-salz" target="_blank" rel="noopener">Tobias Salz</a></p>
+        <p class="venue">Management Science, forthcoming</p>
+        <p class="note">Coverage: New York Times; 2025 Economic Report of the President</p>
+        <p class="paper-links">
+          <button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="abs-genai" hidden>Abstract</button>
+          <a href="https://doi.org/10.1287/mnsc.2025.00535" target="_blank" rel="noopener">Journal page</a>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945566" target="_blank" rel="noopener">SSRN</a>
+        </p>
+        <div class="abstract" id="abs-genai">
+          <p>
+          This study evaluates the effect of generative AI on software developer productivity via
+          randomized controlled trials at Microsoft, Accenture, and an anonymous Fortune 100
+          company. These field experiments, run by the companies as part of their ordinary course
+          of business, provided a random subset of developers with access to an AI-based coding
+          assistant suggesting intelligent code completions. Though each experiment is noisy and
+          results vary across experiments, when data is combined across three experiments and 4,867
+          developers, our analysis reveals a 26.08% increase (SE: 10.3%) in completed tasks among
+          developers using the AI tool. Notably, less experienced developers had higher adoption
+          rates and greater productivity gains.
+          </p>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section class="band">
-    <h2>Author Pages</h2>
-    <p class="links-row">
-      <a href="https://scholar.google.com/citations?user=R3__pBIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
-      <span aria-hidden="true">|</span>
-      <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=5254268" target="_blank" rel="noopener">SSRN</a>
-      <span aria-hidden="true">|</span>
-      <a href="cv.pdf?v=20261029" target="_blank" rel="noopener">CV</a>
-    </p>
+  <section>
+    <h2>Working Papers</h2>
+    <div class="papers">
+      <article class="paper">
+        <p class="paper-title"><a href="papers/familiarity_international_equity.pdf" target="_blank" rel="noopener">Overvalued Geographic Familiarity in International Equity Management</a></p>
+        <p class="byline">with <a href="https://yinan-qiu.github.io/" target="_blank" rel="noopener">Yinan Qiu</a></p>
+        <p class="paper-links">
+          <button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="abs-familiarity" hidden>Abstract</button>
+          <a href="papers/familiarity_international_equity.pdf" target="_blank" rel="noopener">Paper</a>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5279969" target="_blank" rel="noopener">SSRN</a>
+        </p>
+        <div class="abstract" id="abs-familiarity">
+          <p>
+          Foreign education may provide country-specific expertise, but its value across international
+          portfolios is less clear. Within funds over time and across similar funds, greater
+          foreign-educated representation is associated with lower factor-adjusted net returns.
+          High-conviction holdings in managers&rsquo; education countries earn high alphas, but
+          contribute little to portfolio alpha at actual weights. Outside these countries,
+          foreign-educated teams select stocks less successfully in markets bordering or more socially
+          connected to their education countries, where familiarity is expected to help. We connect
+          these investment patterns to how funds recruit and evaluate managers. Funds are more likely
+          to hire managers educated in a country after their holdings there underperform. These
+          appointments are followed by short-lived local improvements. More broadly, foreign-educated
+          recruits bring weaker prior team investment records than U.S.-educated recruits, and
+          foreign-educated managers&rsquo; retention is less sensitive to deteriorating fund
+          performance than that of U.S.-educated colleagues. Together, the findings suggest that funds
+          credit geographic familiarity more broadly than demonstrated investment performance
+          warrants.
+          </p>
+        </div>
+      </article>
+
+      <article class="paper">
+        <p class="paper-title"><a href="papers/WMP_shadow_banking_competition.pdf" target="_blank" rel="noopener">How Hidden Local Government Debt Shapes Shadow Banking Competition: Evidence from Wealth Management in China</a></p>
+        <p class="byline">with <a href="https://www.sem.tsinghua.edu.cn/en/info/1216/7623.htm" target="_blank" rel="noopener">Tao Shen</a> and Tianqi Zhi</p>
+        <p class="paper-links">
+          <button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="abs-wmp" hidden>Abstract</button>
+          <a href="papers/WMP_shadow_banking_competition.pdf" target="_blank" rel="noopener">Paper</a>
+        </p>
+        <div class="abstract" id="abs-wmp">
+          <p>
+          Using granular holdings data on China&rsquo;s RMB 33 trillion market for wealth-management
+          products operated by banks or their subsidiaries, we study how government support for
+          borrowers shapes competition in shadow banking. Smaller banks sought an edge over larger
+          rivals by reaching for yield in home-province bonds issued by local government financing
+          vehicles (LGFVs). The 2023 debt resolution initiative strengthened expected support for
+          LGFVs and compressed their bond spreads. The estimated product-return premium associated
+          with home LGFV bonds fell by 69%. Larger local banks expanded into higher-yielding,
+          LGFV-linked private credit, while smaller banks substituted little and lost ground in
+          relative product returns and wealth-management balances. Our model explains this unequal
+          adjustment through fixed contracting costs that make investment scale important. Government
+          support for borrowers can thus erode smaller banks&rsquo; competitive edge and shift shadow
+          banking toward larger intermediaries and more opaque credit.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Work in Progress</h2>
+    <div class="papers">
+      <article class="paper">
+        <p class="paper-title">The Limits of Debt Discipline: Risk-Based Regulation and Shadow Finance</p>
+        <p class="byline">with <a href="https://www.sem.tsinghua.edu.cn/en/info/1216/7623.htm" target="_blank" rel="noopener">Tao Shen</a>, <a href="https://wxiong.mycpanel.princeton.edu/" target="_blank" rel="noopener">Wei Xiong</a> and Tianqi Zhi</p>
+        <p class="paper-links">
+          <button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="abs-ns" hidden>Abstract</button>
+        </p>
+        <div class="abstract" id="abs-ns">
+          <p>
+          We study whether risk-based regulation makes public debt safer or simply shifts it to other
+          regions and costlier lenders. China caps bond borrowing by local government financing
+          vehicles (LGFVs) in high-risk regions, then refinanced their debt in 2023, mostly in those
+          same regions. We find that this discipline largely moves the borrowing rather than removing
+          it. First, it moves across regions. Borrowing slows in high-risk regions, which later grow
+          more slowly, but keeps rising in regions seen as fiscally stronger despite low investment
+          returns. Second, it moves into shadow finance. LGFVs facing rating-based bond limits turn to
+          costly nonstandard loans from trusts and leasing companies. After the 2023 relief, their
+          nonstandard rates rose 176 basis points relative to their bond rates. Relief aimed at the
+          riskiest regions also invites moral hazard, as less-relieved regions keep expanding this
+          costly nonstandard debt. Discipline can make the bond market look safe while risk builds
+          where it is costlier and harder to see.
+          </p>
+        </div>
+      </article>
+    </div>
   </section>
 
   <section>
     <h2>Teaching</h2>
-    <p class="paper-line">
+    <p class="course">
       <strong>Chinese Financial and Monetary Systems (ECO 494/FIN 594)</strong>
       <br>Princeton University &middot; Fall 2026, Fall 2024, Fall 2023 (Prof. Wei Xiong)
     </p>
-    <p class="paper-line">
+    <p class="course">
       <strong>Introduction to Macroeconomics (ECO 101)</strong>
       <br>Princeton University &middot; Spring 2026, Spring 2025, Spring 2024 (Prof. Richard Rogerson); Fall 2023 (Dr. Henry Shim)
     </p>
   </section>
 </main>
+
+<script>
+  // Abstracts are visible without JavaScript; with it, each one folds behind its Abstract button.
+  document.querySelectorAll('.abstract-toggle').forEach(function (button) {
+    var abstract = document.getElementById(button.getAttribute('aria-controls'));
+    abstract.hidden = true;
+    button.hidden = false;
+    button.addEventListener('click', function () {
+      var open = abstract.hidden;
+      abstract.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>
 
 </body>
 </html>
