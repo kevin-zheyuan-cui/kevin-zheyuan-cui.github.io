@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JMP Pitch</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<style>
+  :root {
+    --bg: #fafaf8; --card: #ffffff; --ink: #1b1d21; --muted: #5d6470; --line: #e3e3de;
+    --accent: #1f4e8c; --accent-soft: #e8eef7; --chip: #eef0f3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14161a; --card: #1c1f25; --ink: #e8e9eb; --muted: #9aa1ac; --line: #2c3038;
+      --accent: #7fb0f0; --accent-soft: #1f2a3a; --chip: #262a31;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14161a; --card: #1c1f25; --ink: #e8e9eb; --muted: #9aa1ac; --line: #2c3038;
+    --accent: #7fb0f0; --accent-soft: #1f2a3a; --chip: #262a31;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 17px/1.65 Georgia, "Times New Roman", serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 80px; }
+  header h1 { font: 600 1.7rem/1.2 system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0 0 6px; }
+  header p { margin: 0 0 22px; color: var(--muted); font: 0.95rem/1.5 system-ui, sans-serif; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; position: sticky; top: 0; background: var(--bg); padding: 10px 0; z-index: 2; }
+  .tabs button { font: 600 0.92rem system-ui, sans-serif; border: 1px solid var(--line); background: var(--card);
+                 color: var(--ink); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between;
+          margin-bottom: 14px; font: 0.88rem system-ui, sans-serif; color: var(--muted); }
+  .chip { background: var(--chip); border-radius: 999px; padding: 3px 10px; }
+  .copy { font: 600 0.85rem system-ui, sans-serif; border: 1px solid var(--line); background: var(--accent-soft);
+          color: var(--accent); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+  .pitch p { margin: 0 0 1em; }
+  .pitch p:last-child { margin-bottom: 0; }
+  .pitch h3 { font: 600 0.78rem/1 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase;
+              color: var(--accent); margin: 1.6em 0 0.6em; }
+  .pitch h3:first-child { margin-top: 0; }
+  .notes { margin-top: 22px; font: 0.92rem/1.55 system-ui, sans-serif; color: var(--muted); }
+  .notes table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .notes th, .notes td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .notes th { color: var(--ink); font-weight: 600; }
+  .qa h3 { font: 600 0.78rem/1 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase;
+           color: var(--accent); margin: 1.8em 0 0.5em; }
+  .qa h3:first-of-type { margin-top: 0.4em; }
+  .qa details { border-top: 1px solid var(--line); padding: 2px 0; }
+  .qa details:last-of-type { border-bottom: 1px solid var(--line); }
+  .qa summary { cursor: pointer; padding: 10px 0; font: 600 0.98rem/1.45 system-ui, sans-serif; color: var(--ink); }
+  .qa summary::marker { color: var(--accent); }
+  .qa details p { margin: 0 0 0.9em; }
+  .qa .src { font: 0.82rem/1.5 system-ui, sans-serif; color: var(--muted); margin-top: -0.4em; }
+  [hidden] { display: none !important; }
+  @media (max-width: 520px) { .card { padding: 20px 18px; } body { font-size: 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Job market paper pitch</h1>
+    <p>Tax Heterogeneity, Duration Risk, and the Term Structure: An Application to the Municipal Bond Puzzle</p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="false" data-tab="ultra">Ultra-short · about 4½ min</button>
+    <button role="tab" aria-selected="true" data-tab="short">Short pitch · about 4¼ min</button>
+    <button role="tab" aria-selected="false" data-tab="long">Long pitch · about 8 min</button>
+    <button role="tab" aria-selected="false" data-tab="qa">Q&amp;A</button>
+  </div>
+
+  <section id="ultra" class="card" role="tabpanel" hidden>
+    <div class="meta">
+      <span><span class="chip">First-round interviews</span> <span class="chip">Opening of a 30-minute slot</span> <span class="chip">"Tell us about your job market paper"</span></span>
+      <button class="copy" data-target="ultra-text">Copy</button>
+    </div>
+    <div class="pitch" id="ultra-text">
+      <p>I study how heterogeneity in investors' taxes shapes bond yield curves. Under the U.S. tax code, tax rates differ widely across investors. A pension fund pays no tax on its taxable bond income, while a top-bracket household pays around 40 percent. Yet the standard bond pricing literature largely ignores this heterogeneity.</p>
+      <p>My job market paper looks at municipal bonds, a 4 trillion dollar tax-exempt market that finances state and local governments. The exemption is worth most to top-bracket households, so the standard benchmark says a muni should yield what they earn after tax on a comparable taxable bond. That works for short bonds, but at thirty years muni yields are about 120 basis points higher. This is the municipal bond puzzle, documented since the 1970s and still unresolved. Despite its name, it is about the relative pricing of munis and taxable bonds, so it concerns how both markets are priced jointly. It matters because the exemption is how the U.S. subsidizes local borrowing, and the gap is large. On thirty-year debt, local governments pay about a third more than the benchmark implies.</p>
+      <p>Muni ownership also shows the importance of this heterogeneity. Top-bracket households own only about half of munis, and lower-tax households, banks and insurers own the rest. I show that investors' tax heterogeneity, and the endogenous segmentation it creates, explains the puzzle.</p>
+      <p>To do so, I build a term-structure model that prices taxable and tax-exempt bonds jointly. Investors with different taxes and liability durations choose across both markets and all maturities. The key is endogenous segmentation. Under short-sale constraints, investors' taxes and liability duration decide who holds which bonds.</p>
+      <p>As an illustration, take two investors, a top-bracket household and a lower-tax investor with long-term liabilities, like an insurer or a household with a mortgage. Taxes sort them across markets. The exemption is worth more to the household, so it holds munis, and the lower-tax investor holds taxable bonds. But the lower-tax investor's liabilities are a natural hedge against interest-rate risk, and this duration benefit grows with maturity. For long munis, it outweighs the smaller exemption benefit, so the lower-tax investor holds long munis too.</p>
+      <p>That's what moves prices. At long maturities, the lower-tax investor holds both munis and taxable bonds, so long muni yields, relative to taxable yields, reflect its lower tax rate. That puts the long muni yield above the household benchmark. This simple two-investor illustration explains both facts, the mixed muni ownership and the muni-puzzle gap that grows with maturity.</p>
+      <p>The full model, with many investor groups calibrated to U.S. data, explains over 80 percent of the gap without targeting muni yields. Two empirical tests support its key prediction, that top-bracket taxes matter most for short-maturity yields and lower-tax investors' taxes matter more for long-maturity yields. First, using variation in state muni exemptions, which only households get, I show that the benefit is priced almost fully at short maturities but less at long maturities. Second, a tax benefit that only banks get barely moves short muni yields but is increasingly priced into long-maturity yields.</p>
+    </div>
+  </section>
+
+  <section id="short" class="card" role="tabpanel">
+    <div class="meta">
+      <span><span class="chip">Conferences</span> <span class="chip">First-round interviews</span> <span class="chip">"What's your paper about?"</span></span>
+      <button class="copy" data-target="short-text">Copy</button>
+    </div>
+    <div class="pitch" id="short-text">
+      <p>I study how differences in investors' taxes shape bond yield curves. In the U.S., these differences are large. A pension fund pays no tax on its taxable bond income, while a top-bracket household pays around 40 percent. Yet standard bond pricing largely ignores this heterogeneity.</p>
+      <p>My job market paper looks at municipal bonds, a 4 trillion dollar tax-exempt market. The exemption is worth the most to top-bracket households, so the standard benchmark says a muni should yield what those households earn after tax on a similar taxable bond. That works for short bonds, but at thirty years muni yields are about 120 basis points above the benchmark.</p>
+      <p>This is the municipal bond puzzle, known since the 1970s and still unresolved. Despite its name, it is about the relative pricing of munis and taxable bonds, so it concerns how both markets are priced jointly. It matters because the exemption is how the U.S. subsidizes state and local borrowing, and who holds the bonds decides how much of that subsidy reaches them.</p>
+      <p>The benchmark uses one tax rate. But investors value the exemption very differently, and top-bracket households own only about half of munis. I show that these differences in investors' taxes, and the endogenous segmentation they create, explain the puzzle.</p>
+      <p>To do so, I build a model that prices taxable and tax-exempt bonds jointly. Investors with different taxes and liabilities choose across both markets and all maturities. The key is endogenous segmentation. Under short-sale constraints, taxes and liability duration decide who holds which bonds, across markets and maturities.</p>
+      <p>Take two investors, a top-bracket household and a lower-tax investor with long-term liabilities, such as an insurer or a household with a mortgage.</p>
+      <p>Taxes sort them. The exemption is worth more to the household, so it holds munis, and the lower-tax investor holds taxable bonds. But its liabilities are a natural hedge against interest-rate risk, and this duration benefit grows with maturity. For long munis, it outweighs the smaller exemption benefit, so the lower-tax investor holds long munis too.</p>
+      <p>That's what moves prices. At long maturities, the lower-tax investor holds both munis and taxable bonds, so long muni yields, relative to taxable yields, reflect its lower tax rate. That puts them above the household benchmark.</p>
+      <p>The full model, with many investor groups and every state's muni market, explains over 80 percent of the gap without being fit to muni yields. Tests using state tax exemptions and a tax break that only banks get support its key prediction, that top-bracket households' taxes matter most for short yields and lower-tax investors' taxes for long yields.</p>
+      <p>This matters for policy. When taxes change, investors reallocate, and a one-rate benchmark misses that, so it misjudges how tax reforms affect borrowing costs.</p>
+    </div>
+  </section>
+
+  <section id="long" class="card" role="tabpanel" hidden>
+    <div class="meta">
+      <span><span class="chip">Talk opening</span> <span class="chip">Fly-out one-on-ones</span> <span class="chip">"Walk me through the paper"</span></span>
+      <button class="copy" data-target="long-text">Copy</button>
+    </div>
+    <div class="pitch" id="long-text">
+      <h3>The question</h3>
+      <p>Here's a basic question in finance. When investors differ, whose valuation does a price reflect? Taxes are one of the biggest ways they differ. A pension fund pays no tax on its taxable bond income, an insurer pays corporate tax, and a top-bracket household pays around 40 percent. Yet standard bond pricing largely ignores this heterogeneity. I study how these differences shape bond yield curves.</p>
+      <p>The cleanest setting is municipal bonds, a 4 trillion dollar market that funds state and local governments. The interest is exempt from federal tax, a subsidy meant to lower their borrowing costs. How much it actually saves them depends on who holds the bonds.</p>
+      <h3>The puzzle</h3>
+      <p>The exemption is worth the most to top-bracket households. So the standard benchmark says a muni should yield what those households earn after tax on a similar taxable bond. That works for short bonds, but at thirty years muni yields are about 120 basis points above the benchmark. Put differently, the tax rate that makes an investor indifferent between a muni and a taxable bond starts near the top household rate at short maturities, about 38 percent at two years, and falls with maturity, to about 21 percent at thirty.</p>
+      <p>This is the municipal bond puzzle, documented since the 1970s and still unresolved. Despite its name, it is about the relative pricing of munis and taxable bonds, so it concerns how both markets are priced jointly.</p>
+      <h3>The idea and the model</h3>
+      <p>The benchmark uses one tax rate. But investors pay very different taxes on taxable bonds. A pension fund, an insurer and a household each keep a different share of taxable interest, so they value the exemption very differently. Muni ownership reflects this. Top-bracket households own only about half of munis, and lower-tax households, banks and insurers own much of the rest. I show that these differences in investors' taxes, and the endogenous segmentation they create, explain the puzzle.</p>
+      <p>To do so, I build a general term-structure model that prices taxable and tax-exempt bonds jointly. Many groups of investors, with different taxes and liabilities, choose across several markets and all maturities. The key is endogenous segmentation. Under short-sale constraints, taxes and liability duration decide who holds which bonds, across markets and maturities, and that pins down both yield curves.</p>
+      <p>To see the intuition, take two investors and two markets, one for munis and one for taxable bonds. The two investors are equally risk averse. One is a top-bracket household. The other is a lower-tax investor with long-term liabilities, such as an insurer or a household with a mortgage.</p>
+      <p>Taxes sort them. The exemption is worth more to the household, so it holds munis, and the lower-tax investor holds taxable bonds. But for long bonds, duration risk matters too. The lower-tax investor's liabilities are a natural hedge against interest-rate risk, and this duration benefit grows with maturity. For long munis, it outweighs the smaller exemption benefit, so the lower-tax investor holds long munis too.</p>
+      <p>That's what moves prices. At long maturities, the lower-tax investor holds both munis and taxable bonds, so long muni yields, relative to taxable yields, reflect its lower tax rate. That puts them above the household benchmark.</p>
+      <h3>Results and tests</h3>
+      <p>The quantitative model brings back many investors. It has high- and lower-tax households in every state, banks, property-casualty and life insurers, and tax-neutral investors, trading across state muni markets and the taxable market. I calibrate it to U.S. taxes, balance sheets and holdings, but not to muni yields. Even so, it explains over 80 percent of the thirty-year gap.</p>
+      <p>The model also predicts that top-bracket households' taxes matter most for short yields, and lower-tax investors' taxes for long yields. Two tests support this. First, most states exempt their own munis from state income tax, so households in high-tax states get a bigger benefit. The benchmark says this benefit should be priced fully at every maturity. In the data, it's priced almost fully in short munis but less and less in long ones. Second, banks get an extra tax break on munis from small issuers. Since only banks get it, the benchmark says it shouldn't matter at all. Comparing issuers just below and just above the size cutoff, I find it barely moves short yields but lowers long yields more and more with maturity.</p>
+      <h3>Why it matters</h3>
+      <p>First, for tax policy. When taxes change, investors reallocate across markets and maturities. A benchmark with one tax rate misses that reallocation, so it misjudges how tax reforms affect borrowing costs, for state and local governments and for taxable issuers too. Taxing muni interest like other interest, for example, would raise yields on munis and on taxable bonds. Borrowers would pay about a dollar twenty in extra interest for every dollar of new tax revenue, so the reform would cost them more than it raises.</p>
+      <p>Second, the framework isn't limited to munis. It applies wherever investors face different taxes, such as state taxes on Treasuries versus corporate bonds, tax-favored retirement accounts and cross-border withholding. In each case, taxes and balance sheets together decide who holds bonds and what borrowers pay.</p>
+    </div>
+  </section>
+
+  <section id="qa" class="card qa" role="tabpanel" hidden>
+    <div class="meta">
+      <span><span class="chip">Interview follow-ups</span> <span class="chip">Answers of about 30–60 seconds</span></span>
+      <button class="copy" id="qa-toggle" type="button">Expand all</button>
+    </div>
+
+    <h3>How it works · clarifying questions</h3>
+    <details><summary>What exactly is the household benchmark, and what is the implied tax rate?</summary>
+      <p>Take a muni and a comparable taxable bond of the same maturity. The implied tax rate is one minus the ratio of their yields. It's the tax rate at which an investor would be indifferent between the two bonds. The household benchmark says this implied tax should equal the top-bracket household's tax rate, about 41 percent including state taxes, at every maturity.</p>
+      <p>In the data it's about 38 percent at two years, close to the benchmark, but only 21 percent at thirty years. In yields, that's the 118 basis points by which thirty-year muni yields exceed what the household earns after tax on the taxable bond.</p>
+    </details>
+    <details><summary>What data do you use?</summary>
+      <p>For yields, I use Mergent issuance records on more than three million muni issues from 2000 to 2020, and the A-or-above corporate zero-coupon curve as the taxable benchmark. For ownership, I use the Financial Accounts for sector holdings, insurers' bond-level NAIC filings, the Survey of Consumer Finances for household balance sheets and IRS data on tax-exempt interest by income bracket. Trade data from MSRB and TRACE and CDS quotes from Markit measure liquidity and default. State tax schedules come from the Tax Foundation.</p>
+    </details>
+    <details><summary>How do you construct the muni yield curve?</summary>
+      <p>I build zero-coupon muni yields from offering prices and contractual cash flows of new issues in the same credit band as the corporate curve. Using new issues gives broad coverage and a common measurement date, and it avoids the capital-gains and market-discount taxes that hit secondary purchases. I then remove the value of the call option and the issuance premium, so the curve is comparable with seasoned, option-free corporate bonds.</p>
+    </details>
+    <details><summary>Can you walk me through the model?</summary>
+      <p>Time is discrete, and one factor drives the short rate, which follows a persistent process with a zero lower bound. Bonds are zero-coupon and grouped into markets, here munis and taxable bonds, and each investor pays a different tax rate in each market.</p>
+      <p>Each investor has funding to invest, a risk aversion and a liability hedge, meaning how the rest of its balance sheet moves when rates change. It chooses bonds of every maturity in every market, plus cash, to maximize after-tax mean minus variance over the next period. It can't short bonds or borrow.</p>
+      <p>The key condition is that an investor holds a bond only if its after-tax return over cash covers the risk the bond adds to its total wealth. So taxes and liability hedges together decide who holds which bond. Prices adjust until every market clears in every rate state, which pins down both yield curves at once.</p>
+    </details>
+    <details><summary>What is the two-investor illustration, exactly?</summary>
+      <p>There are two investors with the same risk aversion and two markets, munis and taxable bonds. One is a top-bracket household. The other pays lower taxes but has a larger liability hedge, like an insurer.</p>
+      <p>The exemption is worth more to the household, and that difference is the same at every maturity. The lower-tax investor's hedge makes rate risk cheaper for it to bear, and that advantage grows with maturity. So in equilibrium the household holds the shorter munis, and beyond a threshold maturity the lower-tax investor holds long munis together with taxable bonds. Since it holds both at the long end, long relative yields reflect its lower tax rate. I solve this case analytically, and it shows the mechanism in its simplest form.</p>
+    </details>
+    <details><summary>What does the quantitative model add?</summary>
+      <p>It brings back the full set of investors. There is one taxable market and 45 muni markets, one for each of the 43 income-tax states and D.C., and one that pools the seven states without an income tax. A period is two years, so maturities run from two to thirty years. Six investor groups trade: high-tax households and lower-tax households in each state, P&amp;C insurers, life insurers, banks, and a tax-neutral group of pensions, foreign investors, governments and nonprofits. Within groups, types differ in their rate exposure, for 643 types in total.</p>
+      <p>I add a small bond-specific shock so different investors can hold the same maturities, and I solve it separately for six three-year periods from 2000 to 2017, each with its own taxes, balance sheets and bond supplies. 2018–2020 is solved out of sample under the 2017 tax law.</p>
+    </details>
+    <details><summary>Where do the liability hedges come from?</summary>
+      <p>Balance-sheet amounts alone don't tell you how much rate risk an investor carries, so I estimate them. For households, three coefficients map each SCF household's outside assets and debt into rate exposure. Insurers have a few types each, banks have one exposure, and the tax-neutral group has a mean and a dispersion. Ownership disciplines these, because given an investor's taxes and size, how much it holds in each market and at which maturities reveals how much rate risk it is willing to bear.</p>
+    </details>
+    <details><summary>How does the state-tax test work? What's the variation?</summary>
+      <p>Most states exempt their own munis from state income tax for residents, so a top-bracket household in a high-tax state gets a bigger benefit from home-state bonds. The variation is cross-state differences in top state tax rates.</p>
+      <p>For each bond, I back out the implied state tax from its yield relative to the corporate yield, after removing the federal tax. I regress it on the state's top rate, separately in five maturity bins, comparing bonds issued in the same month with the same maturity and call status. The sample is 2000–2017 and drops the four states that don't give a clean home-state exemption.</p>
+      <p>The household benchmark says the coefficient is one in every bin, since the state tax should be fully priced. My model says one at the short end and less at the long end, because lower-tax residents and institutions, who don't get this benefit, also price long bonds. The data give 1.07 below five years and 0.31 beyond twenty.</p>
+    </details>
+    <details><summary>How does the bank-qualified test work? What's the variation?</summary>
+      <p>Banks normally can't deduct the interest expense that funds their muni holdings. For bank-qualified bonds, 80 percent of that deduction comes back, which is a tax benefit only banks get. A bond can be bank-qualified only if its issuer sells no more than 10 million dollars of tax-exempt debt that year.</p>
+      <p>The variation comes from that cap. I compare issuers just below and just above it, in a fuzzy regression discontinuity that uses being below the cap as an instrument for designation, estimated separately by maturity. The outcome is the offering yield, and I also scale it by each bond's expected annual tax saving to read the result as the share of the benefit priced.</p>
+      <p>The household benchmark predicts no effect at all, because households set prices and the benefit doesn't reach them. If banks set prices, the full benefit would be priced at every maturity. My model predicts close to nothing at the short end and more at long maturities, where banks hold bonds. The premium is about 2 basis points at one to two years and about 18 at ten to twenty years.</p>
+    </details>
+    <details><summary>How does the rate-response test work?</summary>
+      <p>It asks how much muni yields move when Treasury yields move. The benchmark makes the muni yield a fixed fraction of the Treasury yield, so the response should be the same at every maturity. My model says it rises with maturity, because long munis are priced by investors who keep a larger share of taxable interest.</p>
+      <p>I use consecutive trades in the same noncallable, AA-or-better muni, at most 90 days apart, from 2005 to 2020. I regress the change in its yield on the change in the Treasury yield of the same remaining maturity, interacted with maturity, keeping intervals where Treasuries move by at least 10 basis points. A 100-basis-point Treasury move goes with about 35 basis points at one year and 42 at ten, and the rise holds in all thirty combinations of cutoffs and windows I try.</p>
+    </details>
+    <details><summary>How do you run the policy counterfactuals?</summary>
+      <p>I change the tax rules and re-solve holdings and both yield curves in each period from 2000 to 2017, keeping bond supplies, investors' funding, risk aversion and liability hedges at their baseline values. Then I add up the accounts. Because total pretax interest doesn't change, every extra dollar issuers pay goes either to governments as tax or to investors as after-tax income. So I can report each reform's added borrowing cost per dollar of added revenue, and who gains and loses among investors.</p>
+    </details>
+
+    <h3>The puzzle</h3>
+    <details><summary>Isn't the gap just default risk or liquidity?</summary>
+      <p>I check this three ways. First, I measure default, liquidity and capital-gains differences directly, using CDS spreads, matched trading costs and actual resale tax rules. Together they explain 40 percent of the gap at ten years but only 12 percent at thirty, so about 103 basis points remain at the long end.</p>
+      <p>Second, I compare bonds from the same issuer. Under Build America Bonds in 2009 and 2010, the same municipality sold taxable and tax-exempt bonds at the same maturity in the same quarter, so default risk is identical. The gap still widens with maturity, by about 3.4 basis points per year, or about 64 basis points from the shortest to the longest bonds.</p>
+      <p>Third, earlier work finds the same pattern in pre-refunded bonds, swap rates and option-free bonds adjusted for credit and liquidity.</p>
+      <p class="src">Paper: Sections 3.7–3.8, Table 4, Appendix Table 21.</p>
+    </details>
+    <details><summary>Why use corporate bonds rather than Treasuries as the taxable benchmark?</summary>
+      <p>High-grade corporate bonds are closer to munis in credit and liquidity. Treasuries carry a convenience premium for safety and liquidity, which would show up in the gap, and Treasury interest is also exempt from state tax. I use the A-or-above corporate zero curve, which matches the credit band of the muni sample. Studies that use Treasuries or swap rates as the benchmark find the same puzzle, so the result doesn't depend on this choice.</p>
+    </details>
+    <details><summary>Most munis are callable. How do you handle that?</summary>
+      <p>About half of high-grade munis are callable, so I value the call option with a rate model fitted to yield differences between callable and noncallable bonds and remove it. I also remove the issuance premium, the extra yield at issuance relative to early secondary trades of the same bond. At thirty years these two adjustments take the raw spread of 160 basis points down to the 118-basis-point puzzle, about 30 for the call and 13 for the issuance premium.</p>
+    </details>
+    <details><summary>Why can't households arbitrage the gap away?</summary>
+      <p>The tax code blocks the obvious trade. Interest paid to carry tax-exempt bonds isn't deductible, so a household that buys long munis and shorts long corporates earns the pretax yield difference, which is about minus 95 basis points a year at thirty years. Shorting munis is scarce and costly because lenders owe tax on the payments that replace exempt coupons, and swaps and futures face eligibility limits and deduction rules. Even if I give every household fee-free swap access in the model, the thirty-year gap falls by only about 9 percent.</p>
+    </details>
+    <details><summary>Why does the benchmark work at the short end?</summary>
+      <p>At the shortest maturity the bond is essentially riskless, so the only thing that differs across investors is the tax advantage. Top-bracket households value the exemption most, so they hold short munis and their tax rate sets the relative yield. In the model all three channels that push yields above the benchmark vanish at the riskless short end.</p>
+    </details>
+
+    <h3>The mechanism</h3>
+    <details><summary>Why would an insurer hold munis if it gets a smaller tax benefit than households?</summary>
+      <p>Because for long bonds, taxes aren't the only thing that matters. An insurer has long-term obligations that lose value when rates rise, so rate risk on a long bond is partly hedged on its balance sheet. That makes long bonds cheaper for it to hold than for a household. The difference in exemption benefits is the same at every maturity, but the hedging benefit grows with duration. Past some maturity it outweighs the smaller exemption benefit. That is why P&amp;C insurers put about 40 percent of their bond portfolios in munis.</p>
+    </details>
+    <details><summary>Is a household with a mortgage really a long-duration investor?</summary>
+      <p>A fixed-rate mortgage is a liability whose value falls when rates rise, so it offsets losses on long bonds the household holds. In the quantitative model I don't impose this. I sort Survey of Consumer Finances households by their outside assets and debt, and a few estimated coefficients map those into rate exposure. Observed ownership by maturity disciplines those coefficients.</p>
+    </details>
+    <details><summary>Exactly how does lower-tax participation raise long muni yields?</summary>
+      <p>There are three channels. The first is the exemption benefit. Lower-tax investors hold long bonds in both markets, and because they pay less tax on taxable interest, they accept a smaller yield reduction for the exemption, so long muni yields sit closer to taxable yields.</p>
+      <p>The second is the duration cost. Below the long end, households alone hold the shorter risky munis, and they bear rate risk at a higher cost than the investors holding comparable taxable bonds, so they require more yield.</p>
+      <p>The third is rate loading. Taxes scale returns, so they scale risk. Under the benchmark, the muni yield is a fixed fraction of the taxable yield. Lower-tax investors keep a larger fraction, so the long munis they price move more with rates, and holders need compensation for that extra risk.</p>
+    </details>
+    <details><summary>Is this just a clientele or preferred-habitat story?</summary>
+      <p>The older clientele story said banks set short muni yields and households set long ones, through a bank tax arbitrage that ended in 1986. The puzzle survived 1986, and my mechanism runs the other way. Households anchor the short end, and lower-tax investors matter at the long end.</p>
+      <p>The bigger difference is that segmentation is endogenous. Who holds which bond comes out of taxes and balance sheets, not a fixed habitat. So when a tax changes, holdings move, and the model tells you how prices respond. A fixed-habitat model can't do that.</p>
+    </details>
+    <details><summary>Couldn't something other than liability hedging get lower-tax investors into long munis?</summary>
+      <p>Yes, and the pricing result doesn't depend on hedging specifically. Any advantage that grows with maturity and applies equally to taxable and tax-exempt bonds works the same way, for example lower trading costs or better default diversification. I focus on liability hedging because liability durations differ a lot across investors and I can measure them from balance sheets and discipline them with observed maturity holdings. A preference for munis as such, like warm glow from funding local projects, would push yields down, not up, so it can't explain the puzzle.</p>
+    </details>
+    <details><summary>Where do muni mutual funds and ETFs fit?</summary>
+      <p>Funds are pass-through vehicles, so I assign their holdings to the households who own them. Combining direct and fund holdings with IRS data on tax-exempt interest by income bracket puts about half the market with top-bracket households.</p>
+    </details>
+
+    <h3>Model and calibration</h3>
+    <details><summary>What do you target, and what is left untargeted?</summary>
+      <p>Everything I can measure directly is fixed from data, including tax rules, each sector's size, bond supplies by maturity and state, SCF household balance sheets and the short-rate process. Seventeen coefficients remain, namely risk aversion, the bond-specific shock and investors' outside rate exposures. I fit them to 22 targets, mostly ownership: holdings by sector in each market, insurers' portfolio maturities and composition, and three taxable term spreads.</p>
+      <p>Muni yields, the puzzle itself and all the test coefficients are untargeted. Ownership tells me who bears rate risk, and together with taxes that determines muni yields.</p>
+    </details>
+    <details><summary>How sensitive is the 83 percent to the calibration?</summary>
+      <p>Not very. Changing any group of coefficients by 20 percent moves the thirty-year gap by at most about 4 basis points. Risk aversion is the exception, but only because it scales the whole taxable curve. Lowering it by 20 percent cuts the gap by about 14 basis points, mostly because the thirty-year taxable yield falls by 70. The gap per unit of taxable yield barely moves, from 0.170 to 0.166, and the lower risk aversion leaves taxable term spreads about 20 percent below the data.</p>
+    </details>
+    <details><summary>The model's long taxable yield is above the data. Doesn't that inflate the gap?</summary>
+      <p>Yes, that's why I don't compare basis points directly. The model's thirty-year taxable yield is about 39 basis points too high, and a higher taxable yield mechanically enlarges the gap. So I take the model's implied tax rate at each maturity and apply it to the observed corporate curve. That's the 97 of 118 basis points, or 83 percent.</p>
+    </details>
+    <details><summary>Why a mean-variance model with one-period horizons?</summary>
+      <p>It's the standard setup in the segmentation and term-structure literature, following Vayanos and Vila and Greenwood and coauthors. It keeps the model solvable with more than 600 investor types and 46 markets, all clearing jointly. The force I need is differences in the cost of bearing rate risk, and that comes through the covariance of bond returns with each investor's balance sheet, which this setup captures directly.</p>
+    </details>
+    <details><summary>What about the 2017 tax reform and the SALT cap?</summary>
+      <p>I solve 2018–2020 as an out-of-sample period. It uses the post-reform tax rules and that period's balance sheets but keeps the coefficients estimated on 2000–2017. The SALT cap raised the value of the state exemption for residents whose deductions it limits, so I keep the main state-tax test on 2000–2017 and report the later period separately in the appendix.</p>
+    </details>
+
+    <h3>The empirical tests</h3>
+    <details><summary>High-tax states differ in many ways. Why is the state-tax test credible?</summary>
+      <p>I compare bonds of the same maturity, issued in the same month with the same call status, across states with different top tax rates. I control for ratings and six lagged state variables, including debt outstanding, income, issuance and the maturity structure of supply. Standard errors are clustered by state. Because tax policy might respond to yields, I also instrument current rates with 1990 rates. The IV estimates fall from 1.09 to 0.23, close to OLS.</p>
+      <p>The key point is that the test is about the slope across maturities, not the level. Pass-through falls from 1.07 below five years to 0.31 beyond twenty, a decline of 0.76 with a standard error of 0.24. A state characteristic that shifted yields equally at all maturities wouldn't produce that.</p>
+    </details>
+    <details><summary>Small issuers are different. How do you identify the bank-qualified effect?</summary>
+      <p>Bonds qualify only if the issuer's annual tax-exempt issuance is under 10 million dollars, so I compare issuers just below and just above that cap. It's a fuzzy RD, since crossing the cap cuts the designation rate by about 0.43, and I instrument designation with being below the cap. I drop a half-million window right at the cap to remove bunching.</p>
+      <p>Again, the evidence is in the maturity pattern. The premium is about 2 basis points at one to two years and about 18 at ten to twenty. A fake cutoff at 5 million dollars shows essentially nothing.</p>
+    </details>
+    <details><summary>The bank benefit is the same every year for every bond. Why is it priced only at long maturities?</summary>
+      <p>That's exactly what makes it a clean test. The annual tax saving is the same per dollar whatever the maturity, so if banks priced bonds everywhere, the premium would be flat. Instead, households anchor short yields and banks hold few short bonds, so the benefit barely shows up there. Banks hold longer maturities, where their duration benefit offsets their smaller exemption benefit, and that's where the benefit is priced. As a share of the expected benefit, the premium rises from about 0.17 to about 0.52. It's the mirror image of the household test.</p>
+    </details>
+    <details><summary>Your rate-response test shows munis moving only about 35 percent as much as Treasuries at one year, well below the household's after-tax share. Doesn't that contradict the model?</summary>
+      <p>The test is about how the response changes with maturity, not its level. The one-year number uses coupon yields on traded bonds, while the model's ratio is for zero-coupon yields, so the levels aren't directly comparable. What the benchmark can't explain is the rise with maturity, and that rise is what the rate-loading channel predicts.</p>
+    </details>
+
+    <h3>Policy</h3>
+    <details><summary>Why would taxing muni interest cost issuers more than it raises?</summary>
+      <p>Because investors reallocate. Without the exemption, high-tax households, banks and P&amp;C insurers shorten their portfolios and hold more cash, and short bonds and cash pay less interest to tax. Tax-neutral investors such as pensions and foreign investors take over the long bonds, and the reform doesn't tax them at all. Holding more long bonds raises their rate exposure, so they require higher returns in both markets.</p>
+      <p>Thirty-year muni yields rise by about 171 basis points and thirty-year taxable yields by about 23. Issuers pay 46 billion dollars more a year, governments collect 39 billion, and investors keep the other 8. That's about a dollar twenty of borrowing cost per dollar of revenue, with 13 cents falling on taxable issuers.</p>
+    </details>
+    <details><summary>What about removing only the home-state exemption?</summary>
+      <p>That one raises more for the state than it costs local issuers. Residents keep the federal exemption by switching to other states' munis, but the state now taxes all their interest. Long local yields rise by less than the full state rate because institutions and nonresidents also hold them. Across seven high-tax states, local issuers pay 68 to 88 cents per dollar of added state revenue. Some cost spills over to other states' issuers and taxable issuers, which brings the total to 89 cents to 1.30 dollars.</p>
+    </details>
+    <details><summary>Does Build America Bonds show a better way to subsidize issuers?</summary>
+      <p>A direct subsidy can hand the revenue back to issuers, but it doesn't undo the reallocation. Even if all 38.7 billion dollars of added revenue went back to municipal issuers, they would still pay about 2.4 billion more a year and taxable issuers 5.1 billion more, because the rate risk has moved to investors who require more to bear it.</p>
+    </details>
+
+    <h3>Contribution and beyond the paper</h3>
+    <details><summary>How is this different from Fleckenstein and Longstaff, or Schwert?</summary>
+      <p>Those papers use the household benchmark and show the long-maturity gap survives careful credit, liquidity and option adjustments. My paper explains why the gap exists and why it grows with maturity, through who holds the bonds. On the empirical side, my short-end residual is slightly negative, which fits Fleckenstein and Longstaff's convenience-premium interpretation.</p>
+    </details>
+    <details><summary>Why does this matter outside munis?</summary>
+      <p>Wherever investors pay different taxes on the same asset and face limits to arbitrage, who holds a bond shapes its yield. Natural next settings are the state-tax difference between Treasuries and corporate bonds, tax-favored retirement accounts and cross-border withholding. For policy, the lesson is that a tax change in one market moves borrowing costs in other markets and redistributes income across investors.</p>
+    </details>
+    <details><summary>What's your research agenda?</summary>
+      <p>My research studies how intermediaries shape asset prices and the effects of policy. They differ in taxes, balance sheets, incentives and information, and those differences decide who holds each asset and where risk goes when policy changes. I plan to go in three directions. First, how changes in who holds government debt move yields at each maturity, including Treasuries, retirement accounts and cross-border withholding, and following debt that leaves the bond market to the lenders who end up holding it. Second, how funds select, evaluate and retain managers. Third, how AI tools change the work of analysts and portfolio managers and whether they narrow the gap between large and small intermediaries.</p>
+    </details>
+    <details><summary>Tell me about your other papers.</summary>
+      <p>Two are on Chinese government debt. In the wealth-management paper with Tao Shen and Tianqi Zhi, smaller banks reached for yield in home-province LGFV bonds, the 2023 debt-resolution program cut the return premium on those bonds by 69 percent, and larger banks then moved into higher-yielding private credit while smaller banks lost ground. In the ongoing paper with Tao Shen, Wei Xiong and Tianqi Zhi, caps on LGFV bond borrowing mostly move risk into costly nonstandard loans, whose rates rose 176 basis points relative to bond rates after the 2023 relief.</p>
+      <p>With Yinan Qiu, I show that international equity funds overvalue managers' local expertise. And in a forthcoming Management Science paper with Mert Demirer and coauthors, field experiments with nearly 5,000 developers show an AI coding assistant raised completed tasks by 26 percent.</p>
+    </details>
+    <details><summary>What can you teach?</summary>
+      <p>I've been a teaching assistant at Princeton for six semesters, in a course on China's financial system for undergraduate and graduate students and in introductory macroeconomics, where I lead precepts and help design assessments. I can teach any course in finance or macroeconomics at the undergraduate, master's, MBA or PhD level, and I'm especially well prepared for asset pricing and China's financial system.</p>
+    </details>
+  </section>
+
+  <div class="notes">
+    <strong>Spoken numbers and the exact figures behind them</strong>
+    <table>
+      <tr><th>Say</th><th>Exact, from the paper</th></tr>
+      <tr><td>about 120 basis points</td><td>118 bp at thirty years, 2000–2020</td></tr>
+      <tr><td>38 percent → 21 percent</td><td>implied marginal tax rate at two years vs. thirty years</td></tr>
+      <tr><td>over 80 percent</td><td>83% (97 of 118 bp), municipal yields not targeted</td></tr>
+      <tr><td>about a dollar twenty</td><td>$1.20 added cost to municipal and taxable issuers per dollar of added federal and state receipts from removing the federal exemption; $0.13 falls on taxable issuers</td></tr>
+      <tr><td>about half</td><td>share of municipal bonds held by top-bracket households</td></tr>
+      <tr><td>lower-tax investors with long-duration liabilities</td><td>the paper’s examples are insurers with long-term obligations and lower-tax households with mortgage debt</td></tr>
+    </table>
+    <p>The long pitch uses the two tests in the abstract. If asked for more evidence, the third test in the introduction is that muni yields respond more to Treasury moves as maturity rises, while the benchmark says the response should be the same proportion at every maturity. To shorten the long pitch, drop the paragraph on going beyond munis first.</p>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.tabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.tabs button').forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('[role="tabpanel"]').forEach(function (s) { s.hidden = s.id !== b.dataset.tab; });
+      document.querySelector('.notes').hidden = b.dataset.tab === 'qa';
+    });
+  });
+  var qaToggle = document.getElementById('qa-toggle');
+  qaToggle.addEventListener('click', function () {
+    var all = document.querySelectorAll('#qa details');
+    var open = Array.prototype.some.call(all, function (d) { return !d.open; });
+    all.forEach(function (d) { d.open = open; });
+    qaToggle.textContent = open ? 'Collapse all' : 'Expand all';
+  });
+  document.querySelectorAll('.copy[data-target]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var el = document.getElementById(b.dataset.target);
+      var text = Array.prototype.map.call(el.querySelectorAll('p'), function (p) { return p.textContent; }).join('\n\n');
+      var done = function () { var t = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = t; }, 1400); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, function () {}); }
+    });
+  });
+</script>
+</body>
+</html>
